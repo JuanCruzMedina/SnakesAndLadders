@@ -5,12 +5,13 @@
 //   \___ /  \____//__/\__\ \___/ |____/ \________/|__|    \___/ |____/ |  __/ 
 //                                                                      |__|
 
+using SnakesAndLadders.Contracts;
 using SnakesAndLadders.Menu;
 using SnakesAndLadders.Models;
 
 
-BoardGameModel snakesAndLadders;
-PlayerModel player;
+IBoardGame snakesAndLadders;
+IPlayer player;
 
 #region Menu
 

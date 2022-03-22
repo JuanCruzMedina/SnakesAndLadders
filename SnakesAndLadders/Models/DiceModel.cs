@@ -33,6 +33,7 @@ namespace SnakesAndLadders.Models
             MaxValue = maxValue;
             _random = new();
         }
-        public virtual int Roll() => _random.Next(1, 6);
+
+        public int Roll() => _random.Next(MinValue, MinValue);
     }
 }

@@ -11,12 +11,12 @@
         public List<Option> Options = new();
         public string Text { get; set; }
 
-        private void ShowDivider()
+        private static void ShowDivider()
         {
-            string separator = new string('-', 75);
+            string separator = new('-', 75);
             Console.WriteLine(separator);
         }
-        private void ShowAsTittle(string text)
+        private static void ShowAsTittle(string text)
         {
             ShowDivider();
             Console.WriteLine($"\t{text}");

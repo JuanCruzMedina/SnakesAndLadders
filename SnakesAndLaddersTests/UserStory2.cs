@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using SnakesAndLadders.Contracts;
 using SnakesAndLadders.Models;
 
 namespace SnakesAndLaddersTests
@@ -22,8 +23,8 @@ namespace SnakesAndLaddersTests
         [TestMethod]
         public void Test_UAT1()
         {
-            BoardGameModel snakesAndLadders = new(new DiceModel());
-            var player = new PlayerModel(snakesAndLadders);
+            IBoardGame snakesAndLadders = new BoardGameModel(new DiceModel());
+            IPlayer player = new PlayerModel(snakesAndLadders);
             player.MoveToken(96);
             Assert.AreEqual(97, player.GetTokenPosition());
             player.MoveToken(3);
@@ -40,8 +41,8 @@ namespace SnakesAndLaddersTests
         [TestMethod]
         public void Test_UAT2()
         {
-            BoardGameModel snakesAndLadders = new(new DiceModel());
-            var player = new PlayerModel(snakesAndLadders);
+            IBoardGame snakesAndLadders = new BoardGameModel(new DiceModel());
+            IPlayer player = new PlayerModel(snakesAndLadders);
             player.MoveToken(96);
             Assert.AreEqual(97, player.GetTokenPosition());
             player.MoveToken(4);

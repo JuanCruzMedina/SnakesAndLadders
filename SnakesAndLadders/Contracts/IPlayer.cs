@@ -38,5 +38,7 @@
         /// </summary>
         /// <param name="spaces">Cantidad de espacios que se moverá la ficha. </param>
         public void MoveToken(int spaces);
+
+        public IBoardGame GetBoardGame();
     }
 }

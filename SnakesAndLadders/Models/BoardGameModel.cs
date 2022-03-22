@@ -16,10 +16,10 @@ namespace SnakesAndLadders.Models
         /// <param name="endPosition">Posición final del tablero. Por defecto es 100.</param>
         /// <exception cref="ArgumentNullException">Excepción arrojada si el dado es nulo.</exception>
         /// <exception cref="ArgumentOutOfRangeException">Excepción arrojada si el rango que va desde la posición inicial y la posición final del tablero es inválido.</exception>
-        public BoardGameModel(DiceModel dice, int startPosition = 1, int endPosition = 100)
+        public BoardGameModel(IDice dice, int startPosition = 1, int endPosition = 100)
         {
             Dice = dice ?? throw new ArgumentNullException(nameof(dice));
-            if (startPosition >= endPosition) throw new ArgumentOutOfRangeException("Invalid range of positions.");
+            if (startPosition >= endPosition) throw new ArgumentOutOfRangeException($"Invalid range of positions. ({startPosition}-{endPosition})");
             StartPosition = startPosition;
             EndPosition = endPosition;
         }

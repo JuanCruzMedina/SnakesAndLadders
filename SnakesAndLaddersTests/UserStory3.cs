@@ -2,6 +2,7 @@
 
 using Moq;
 
+using SnakesAndLadders.Contracts;
 using SnakesAndLadders.Models;
 
 namespace SnakesAndLaddersTests
@@ -23,8 +24,8 @@ namespace SnakesAndLaddersTests
         [TestMethod]
         public void Test_UAT1()
         {
-            BoardGameModel snakesAndLadders = new(new DiceModel());
-            var player = new PlayerModel(snakesAndLadders);
+            IBoardGame snakesAndLadders = new BoardGameModel(new DiceModel());
+            IPlayer player = new PlayerModel(snakesAndLadders);
 
             player.RollTheDie();
             Assert.IsTrue(1 <= player.GetSpacesToMove() && player.GetSpacesToMove() <= 6);
@@ -39,12 +40,11 @@ namespace SnakesAndLaddersTests
         public void Test_UAT2()
         {
             int startPosition = 1;
-
             int mockResult = 4;
-            var diceMocked = GetDiceMocked(1, 6, mockResult);
+            IDice diceMocked = GetDiceMocked(mockResult);
 
-            BoardGameModel snakesAndLadders = new(diceMocked, startPosition);
-            var player = new PlayerModel(snakesAndLadders);
+            IBoardGame snakesAndLadders = new BoardGameModel(diceMocked, startPosition);
+            IPlayer player = new PlayerModel(snakesAndLadders);
             Assert.AreEqual(startPosition, player.GetTokenPosition());
 
             player.RollTheDie();
@@ -62,12 +62,9 @@ namespace SnakesAndLaddersTests
         /// <param name="maxValue">Valor máximo del dado.</param>
         /// <param name="mockValue">Valor fijo que retornará el método para rodar el dado.</param>
         /// <returns>Dado con su método mockeado.</returns>
-        private static DiceModel GetDiceMocked(int minValue, int maxValue, int mockValue)
+        private static IDice GetDiceMocked(int mockValue)
         {
-            Mock<DiceModel> diceMocked = new(minValue, maxValue)
-            {
-                CallBase = true
-            };
+            Mock<IDice> diceMocked = new();
             diceMocked.Setup(a => a.Roll()).Returns(mockValue);
             return diceMocked.Object;
         }

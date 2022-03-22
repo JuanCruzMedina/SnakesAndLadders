@@ -9,6 +9,6 @@
         /// Permite rodar el dado.
         /// </summary>
         /// <returns>El número obtenido al rodar el dado.</returns>
-        public virtual int Roll() => 0;
+        public int Roll();
     }
 }

@@ -62,7 +62,9 @@ namespace SnakesAndLadders.Models
             if ((Token.GetPosition() + spaces) > Game.GetEndPosition()) return;
             Token.Move(spaces);
         }
-        
+
+        public IBoardGame GetBoardGame() => Game;
+
         #endregion
     }
 }
